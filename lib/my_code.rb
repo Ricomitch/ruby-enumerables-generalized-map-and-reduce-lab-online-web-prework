@@ -1,22 +1,27 @@
-def map(array)
-  new_array = []
-  array.each do |el|
-    new_array << yield(el)
-  end
-  new_array
-end
+def map_to_negativize(source_array)
+  source_array.map{|a| a*(-1)} 
+end 
 
-def reduce(array, starting_value=nil)
-  if starting_value
-    reduction = starting_value
-    i = 0
-  else
-    reduction = array[0]
-    i = 1
-  end
-  while i < array.length
-    reduction = yield(reduction, array[i])
-    i += 1
-  end
-  reduction
-end
+def map_to_no_change(source_array)
+  source_array.map{|a|  a*1}
+end 
+
+def map_to_double(source_array)
+  source_array.map{|a| a*2}
+end 
+
+def map_to_square(source_array)
+  source_array.map{ |a| a**2}
+  
+def reduce_to_total(source_array, starting_point)
+   source_array.map{|a| a+= starting_point}
+end 
+
+def reduce_to_all_true(source_array)
+  source_array.reduce(0){|a,b| a+b}
+end 
+
+def reduce_to_any_true(source_array)
+  source_array.reduce(:+)
+end 
+  
